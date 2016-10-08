@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WindowsPerformanceRecorder Version="1.0">
+  <Profiles>
+    <EventCollector Id="EventCollector_DCC16_Demo3"
+                    Name="DCC16_Demo3_Collector">
+      <BufferSize Value="1024" />
+      <Buffers Value="200" />
+    </EventCollector>
+    <EventProvider Id="DCC16-DCC16Demo3-Demo3EventSource"
+                   Name="*DCC16-DCC16Demo3-Demo3EventSource" />   
+    <EventProvider Id="Microsoft-Windows-DotNETRuntime"
+                   Name="Microsoft-Windows-DotNETRuntime" />
+    <EventProvider Id="EventProvider_DotNETRuntime"
+                   Name="E13C0D23-CCBC-4E12-931B-D9CC2EEE27E4"
+                   Level="5">
+      <Keywords>
+        <Keyword Value="0x4007CCBD" />
+      </Keywords>
+    </EventProvider>
+    <EventProvider Id="EventProvider_DotNETRuntimePrivate"
+                   Name="763fd754-7086-4dfe-95eb-c01a46faf4ca"
+                   Level="4">
+      <Keywords>
+        <Keyword Value="0x1" />
+      </Keywords>
+    </EventProvider>
+
+    
+    <Profile Id="DCC16_Demo3.Verbose.File"
+             Name="DCC16_Demo3"
+             Description="EventSource for DCC16"
+             LoggingMode="File"
+             DetailLevel="Verbose">
+      <Collectors>
+        <EventCollectorId Value="EventCollector_DCC16_Demo3">
+          <EventProviders>
+            <EventProviderId Value="DCC16-DCC16Demo3-Demo3EventSource" />            
+            <EventProviderId Value="EventProvider_DotNETRuntime" />
+            <EventProviderId Value="EventProvider_DotNETRuntimePrivate" />
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile Id="DCC16_Demo3.Verbose.Memory"
+             Name="DCC16_Demo3"
+             Description="EventSource for DCC16"
+             Base="DCC16_Demo3.Verbose.File"
+             LoggingMode="Memory"
+             DetailLevel="Verbose" />
+  </Profiles>
+</WindowsPerformanceRecorder>
